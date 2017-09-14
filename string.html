@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>String</title>
+</head>
+<body>
+	<!-- <script>
+		let str="abc这是什么鬼de";
+		str.charAt(2);
+		str.charCodeAt(0);
+		String.fromCharCode(98);
+		console.log(str.charAt(2)); //a
+		console.log(str.charCodeAt(0)); //97
+		console.log(String.fromCharCode(98));  //b
+	</script> -->
+	<!-- <script>
+		let str='abcdefg';
+		str.slice(2,4);  //slice(start,end)
+		str.slice(3);
+		str.slice(2,-1);  //支持负数
+		console.log(str.slice(2,4));  //cd
+        console.log(str.slice(3));  //defg
+        console.log(str.slice(2,-1));//cdef
+	</script> -->
+	<script>
+	/*存在
+	  包含
+	  替换
+	  更新
+	  返值*/
+		let str='abcdbcdvbcdnmabcd';
+		// replaceAll(str,'cd','**');
+        function replaceAll(str,rStr){
+        	// let star='';
+        	// for(let i=0;i<rStr.length;i++){
+        	// 	star+='*';
+        	// }
+        	let star='*'.repeat(rStr.length);  //重复repeat
+        	while (str.includes(rStr)){
+        		str=str.replace(rStr,star);
+        	}
+            return str;
+        }
+        console.log(replaceAll(str,'cd'));
+	</script>
+	<script>
+		let url='https://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.com';
+		/*第一种方法*/  /*找出位置并替换*/
+		function indexOfAll(url,rStr){
+			let arr=[];
+			let star='*'.repeat(rStr.length);
+			while (url.includes(rStr)){
+				arr.push(url.indexOf(rStr));   //push是数组里的方法
+				url=url.replace(rStr,star);
+			}
+			return arr;
+		}
+		console.log(indexOfAll(url,'baidu'));
+		/*第二种方法:截取*/
+	    function indexOfAll(url,rStr){
+	    	let arr1=[];
+	    	for (let i=0;i<url.length;i++){
+	    		if (url.slice(i,i+5)==rStr){
+	    			arr1[arr1.length]=i;
+	    		}
+	    	}
+	    	return arr1;
+	    }
+        console.log(indexOfAll(url,'baidu'));
+	</script>
+</body>
+</html>
